@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/11 16:46:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/01/19 15:11:22 by alsomvil         ###   ########.fr       */
+/*   Created: 2017/11/30 07:04:36 by alsomvil          #+#    #+#             */
+/*   Updated: 2017/11/30 07:40:30 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 16
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-
-int					get_next_line(const int fd, char **line);
-typedef struct		s_fd
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int			fd;
-	char		*save;
-	char		*free;
-	struct s_fd	*next;
-}					t_fd;
+	size_t				i;
+	unsigned char		tmp;
+	const unsigned char	*tmps;
 
-#endif
+	i = 0;
+	tmp = (unsigned char)c;
+	tmps = s;
+	while (i < n)
+	{
+		if (tmps[i] == tmp)
+			return ((void *)&tmps[i]);
+		i++;
+	}
+	return (NULL);
+}

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/11 16:46:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/01/19 15:11:22 by alsomvil         ###   ########.fr       */
+/*   Created: 2017/12/01 03:33:16 by alsomvil          #+#    #+#             */
+/*   Updated: 2017/12/01 03:53:02 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 16
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-
-int					get_next_line(const int fd, char **line);
-typedef struct		s_fd
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int			fd;
-	char		*save;
-	char		*free;
-	struct s_fd	*next;
-}					t_fd;
+	size_t	j;
 
-#endif
+	j = 0;
+	if (n == 0)
+		return (0);
+	while ((s1[j] == s2[j]) && s1[j] && s2[j] && j < n)
+	{
+		j++;
+		if ((!s1[j] && !s2[j]) || j >= n)
+			return (0);
+	}
+	return ((unsigned char)s1[j] - (unsigned char)s2[j]);
+}

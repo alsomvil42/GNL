@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/11 16:46:49 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/01/19 15:11:22 by alsomvil         ###   ########.fr       */
+/*   Created: 2017/12/01 00:36:01 by alsomvil          #+#    #+#             */
+/*   Updated: 2017/12/01 00:47:03 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 16
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-
-int					get_next_line(const int fd, char **line);
-typedef struct		s_fd
+char	*ft_strchr(const char *s, int c)
 {
-	int			fd;
-	char		*save;
-	char		*free;
-	struct s_fd	*next;
-}					t_fd;
+	int		i;
+	char	*tmps;
+	char	tmp;
 
-#endif
+	i = 0;
+	tmps = (char *)s;
+	tmp = (const char)c;
+	if (tmp == '\0')
+	{
+		while (tmps[i])
+			i++;
+		return (&tmps[i]);
+	}
+	while (tmps[i] != tmp)
+	{
+		i++;
+		if (tmps[i] == '\0')
+			return (NULL);
+	}
+	return (&tmps[i]);
+}

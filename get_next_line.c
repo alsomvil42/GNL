@@ -6,7 +6,7 @@
 /*   By: alsomvil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 16:42:29 by alsomvil          #+#    #+#             */
-/*   Updated: 2018/08/20 06:22:34 by alsomvil         ###   ########.fr       */
+/*   Updated: 2018/01/14 07:47:36 by alsomvil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,11 @@ int		gnlparttwo(int ret, t_fd *tmp, char **line, char *buf)
 	{
 		if (!(tmp->free = ft_strjoin(str, buf)))
 			return (-1);
-		free(str);
+		ft_memdel((void **)&str);
 		str = tmp->free;
 		if (ft_nextline(str, NULL, 0))
 		{
 			tmp->save = ft_nextline(str, line, 1);
-			free(str);
 			return (1);
 		}
 		ft_bzero(buf, BUFF_SIZE + 1);
